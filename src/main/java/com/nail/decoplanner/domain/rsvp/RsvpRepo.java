@@ -1,4 +1,10 @@
 package com.nail.decoplanner.domain.rsvp;
 
-public class RsvpRepo {
+import com.nail.decoplanner.domain.rsvp.Rsvp;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface RsvpRepo extends JpaRepository<Rsvp, String> {
+
 }

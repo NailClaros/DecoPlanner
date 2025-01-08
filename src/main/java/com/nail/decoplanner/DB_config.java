@@ -1,5 +1,6 @@
 package com.nail.decoplanner;
 import io.github.cdimascio.dotenv.Dotenv;
+import com.nail.decoplanner.domain.user.UserService;
 public class DB_config {
     public static void main(String[] args) {
         Dotenv dotenv = Dotenv.load();
