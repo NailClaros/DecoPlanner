@@ -1,13 +1,15 @@
-package com.nail.decoplanner.domain.event;
-import com.nail.decoplanner.domain.event.EventRepo;
+package com.nail.decoplanner.Service;
+import com.nail.decoplanner.Entity.Event;
+import com.nail.decoplanner.Dao.EventRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
 public class EventService {
-    private final EventRepo eventRepository;
 
+    private final EventRepo eventRepository;
+    @Autowired
     public EventService(EventRepo eventRepository) {
         this.eventRepository = eventRepository;
     }

@@ -1,6 +1,6 @@
-package com.nail.decoplanner.api.rsvp;
-import com.nail.decoplanner.domain.rsvp.Rsvp;
-import com.nail.decoplanner.domain.rsvp.RsvpService;
+package com.nail.decoplanner.Controller;
+import com.nail.decoplanner.Entity.Rsvp;
+import com.nail.decoplanner.Service.RsvpService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

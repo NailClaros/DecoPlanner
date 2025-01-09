@@ -2,9 +2,8 @@ package com.nail.decoplanner;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
 @SpringBootApplication
-@EnableJpaRepositories({"com.nail.decoplanner.domain.event", "com.nail.decoplanner.domain.rsvp", "com.nail.decoplanner.domain.UserRepository"})
 public class DecoPlannerApplication {
 
     public static void main(String[] args) {

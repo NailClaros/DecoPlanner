@@ -1,4 +1,4 @@
-package com.nail.decoplanner.domain.rsvp;
+package com.nail.decoplanner.Entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

@@ -1,11 +1,13 @@
-package com.nail.decoplanner.api.user;
+package com.nail.decoplanner.Controller;
 
-import com.nail.decoplanner.domain.user.User;
-import com.nail.decoplanner.domain.user.UserService;
+import com.nail.decoplanner.Entity.User;
+import com.nail.decoplanner.Service.UserService;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/users")
@@ -24,11 +26,11 @@ public class User_Controller {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<User> getUserById(@PathVariable String userId) {
+    public ResponseEntity<User> getUserById(@PathVariable UUID userId) {
         return ResponseEntity.ok(userService.getUserById(userId));
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> createUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.createUser(user));
     }
@@ -40,7 +42,7 @@ public class User_Controller {
 //    }
 
     @DeleteMapping("/{userId}")
-    public ResponseEntity<Void> deleteUser(@PathVariable String userId) {
+    public ResponseEntity<Void> deleteUser(@PathVariable UUID userId) {
         userService.deleteUser(userId);
         return ResponseEntity.noContent().build();
     }

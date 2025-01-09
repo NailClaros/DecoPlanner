@@ -1,7 +1,8 @@
-package com.nail.decoplanner.domain.user;
+package com.nail.decoplanner.Entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "users")
@@ -9,7 +10,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String userId;
+    private UUID userId;
 
     @Column(nullable = false, unique = true, length = 50)
     private String username;
@@ -44,6 +45,31 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
+    }
+
+    public UUID getUserId() {
+        return userId;
+    }
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public String getEmail() {
+        return email;
     }
 
 }

@@ -1,9 +1,11 @@
-package com.nail.decoplanner.domain.user;
+package com.nail.decoplanner.Service;
 
-import com.nail.decoplanner.domain.user.User;
+import com.nail.decoplanner.Entity.User;
+import com.nail.decoplanner.Dao.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -18,7 +20,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User getUserById(String userId) {
+    public User getUserById(UUID userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
     }
@@ -34,15 +36,15 @@ public class UserService {
         System.out.println("User saved successfully! - testuser");
     }
 
-//    public User updateUser(String userId, User userDetails) {
-//        User user = getUserById(userId);
-//        user.setUsername(userDetails.getUsername());
-//        user.setPassword(userDetails.getPassword());
-//        user.setEmail(userDetails.getEmail());
-//        return userRepository.save(user);
-//    }
+    public User updateUser(UUID userId, User userDetails) {
+        User user = getUserById(userId);
+        user.setUsername(userDetails.getUsername());
+        user.setPassword(userDetails.getPassword());
+        user.setEmail(userDetails.getEmail());
+        return userRepository.save(user);
+    }
 
-    public void deleteUser(String userId) {
+    public void deleteUser(UUID userId) {
         userRepository.deleteById(userId);
     }
 }

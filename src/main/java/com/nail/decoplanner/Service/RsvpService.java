@@ -1,5 +1,6 @@
-package com.nail.decoplanner.domain.rsvp;
-import com.nail.decoplanner.domain.rsvp.RsvpRepo;
+package com.nail.decoplanner.Service;
+import com.nail.decoplanner.Entity.Rsvp;
+import com.nail.decoplanner.Dao.RsvpRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,6 +1,6 @@
-package com.nail.decoplanner.domain.rsvp;
+package com.nail.decoplanner.Dao;
 
-import com.nail.decoplanner.domain.rsvp.Rsvp;
+import com.nail.decoplanner.Entity.Rsvp;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

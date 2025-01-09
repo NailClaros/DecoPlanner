@@ -1,9 +1,8 @@
-package com.nail.decoplanner.api.event;
-import com.nail.decoplanner.domain.event.EventService;
+package com.nail.decoplanner.Controller;
+import com.nail.decoplanner.Service.EventService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.nail.decoplanner.domain.event.Event;
-import com.nail.decoplanner.domain.event.EventService;
+import com.nail.decoplanner.Entity.Event;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
