@@ -30,16 +30,24 @@ public class User_Controller {
         return ResponseEntity.ok(userService.getUserById(userId));
     }
 
+    @RequestMapping(value = "/updateUsername", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> updateUser(@RequestBody User user) {
+        return ResponseEntity.ok(userService.updateUserN(user));
+    }
+    @RequestMapping(value = "/updatePW", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> updatePassword(@RequestBody User user) {
+        return  ResponseEntity.ok(userService.updateUserP(user));
+    }
+
+    @RequestMapping(value = "/updateEmail", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> updateEmail(@RequestBody User user) {
+        return  ResponseEntity.ok(userService.updateUserE(user));
+    }
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> createUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.createUser(user));
     }
-
-//    @PutMapping("/{userId}")
-//    public ResponseEntity<User> updateUser(
-//            @PathVariable String userId, @RequestBody User userDetails) {
-//        return ResponseEntity.ok(userService.updateUser(userId, userDetails));
-//    }
 
     @DeleteMapping("/{userId}")
     public ResponseEntity<Void> deleteUser(@PathVariable UUID userId) {

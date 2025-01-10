@@ -36,12 +36,23 @@ public class UserService {
         System.out.println("User saved successfully! - testuser");
     }
 
-    public User updateUser(UUID userId, User userDetails) {
-        User user = getUserById(userId);
-        user.setUsername(userDetails.getUsername());
-        user.setPassword(userDetails.getPassword());
-        user.setEmail(userDetails.getEmail());
-        return userRepository.save(user);
+    public String updateUserN(User user) {
+        User users = getUserById(user.getUserId());
+        users.setUsername(user.getUsername());
+        userRepository.save(users);
+        return users.getUsername();
+    }
+    public String updateUserE(User user) {
+        User users = getUserById(user.getUserId());
+        users.setEmail(user.getEmail());
+        userRepository.save(users);
+        return "Email updated";
+    }
+    public String updateUserP(User user) {
+        User users = getUserById(user.getUserId());
+        users.setPassword(user.getPassword());
+        userRepository.save(users);
+        return "Password updated";
     }
 
     public void deleteUser(UUID userId) {

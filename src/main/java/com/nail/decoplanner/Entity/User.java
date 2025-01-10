@@ -50,9 +50,6 @@ public class User {
     public UUID getUserId() {
         return userId;
     }
-    public void setUserId(UUID userId) {
-        this.userId = userId;
-    }
     public String getUsername() {
         return username;
     }
