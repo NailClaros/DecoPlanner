@@ -2,6 +2,7 @@ package com.nail.decoplanner.Entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "rsvps")
@@ -9,13 +10,22 @@ public class Rsvp {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String rsvpId;
+    private UUID rsvpId;
 
     @Column(nullable = false)
-    private String eventId;
+    private UUID userId;
 
     @Column(nullable = false)
-    private String userId;
+    private String name;
+
+    @Column(nullable = false)
+    private String address;
+
+    @Column(nullable = false)
+    private double latitude;
+
+    @Column(nullable = false)
+    private double longitude;
 
     @Column(nullable = false)
     private String rsvpStatus;
@@ -40,29 +50,34 @@ public class Rsvp {
     public Rsvp() {}
 
     // Parameterized constructor
-    public Rsvp(String eventId, String userId, String rsvpStatus) {
-        this.eventId = eventId;
+    public Rsvp(UUID userId, String name, String address, double latitude, double longitude) {
         this.userId = userId;
-        this.rsvpStatus = rsvpStatus;
+        this.name = name;
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.rsvpStatus = "Pending";
     }
 
     // Getters and Setters
-    public String getRsvpId() {
+    public UUID getRsvpId() {
         return rsvpId;
     }
-    public void setRsvpId(String rsvpId) {
+    public void setRsvpId(UUID rsvpId) {
         this.rsvpId = rsvpId;
     }
-    public String getEventId() {
-        return eventId;
-    }
-    public void setEventId(String eventId) {
-        this.eventId = eventId;
-    }
-    public String getUserId() {
+    public UUID getUserId() {
         return userId;
     }
-    public void setUserId(String userId) {
+    public String getName() {return name;}
+    public void setName(String name) {this.name = name;}
+    public String getAddress() {return address;}
+    public void setAddress(String address) {this.address = address;}
+    public double getLatitude() {return latitude;}
+    public double getLongitude() {return longitude;}
+    public void setLongitude(double longitude) {this.longitude = longitude;}
+    public void setLatitude(double latitude) {this.latitude = latitude;}
+    public void setUserId(UUID userId) {
         this.userId = userId;
     }
     public String getRsvpStatus() {

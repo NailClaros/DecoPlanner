@@ -3,7 +3,9 @@ import com.nail.decoplanner.Entity.Event;
 import com.nail.decoplanner.Dao.EventRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class EventService {
@@ -14,30 +16,33 @@ public class EventService {
         this.eventRepository = eventRepository;
     }
 
-    public List<Event> getAllEvents() {
+    public List<Event> getAllEventees() {
         return eventRepository.findAll();
     }
 
-    public Event getEventById(String eventId) {
-        return eventRepository.findById(eventId)
-                .orElseThrow(() -> new IllegalArgumentException("Event not found"));
+    public List<Event> getEventByRSVPID(UUID rsvp_id) {
+        return eventRepository.findAll().stream()
+                .filter(event -> rsvp_id.equals(event.getRsvp_id()))
+                .toList();
     }
 
-    public Event createEvent(Event event) {
-        return eventRepository.save(event);
+    public List<Event> getEventByUserId(UUID userId) {
+        return eventRepository.findAll().stream()
+                .filter(event -> userId.equals(event.getUser_id()))
+                .toList();
     }
 
-    public Event updateEvent(String eventId, Event eventDetails) {
-        Event event = getEventById(eventId);
-        event.setTitle(eventDetails.getTitle());
-        event.setDescription(eventDetails.getDescription());
-        event.setEventDate(eventDetails.getEventDate());
-        event.setEventTime(eventDetails.getEventTime());
-        event.setLocation(eventDetails.getLocation());
-        return eventRepository.save(event);
+    public void createEvent(Event event) {
+        System.out.println("Eventee saved successfully!");
+        eventRepository.save(event);
     }
 
-    public void deleteEvent(String eventId) {
+    public Event updateEvent(UUID eventId, Event eventDetails) {
+        return eventRepository.save(eventDetails);
+
+    }
+
+    public void deleteEvent(UUID eventId) {
         eventRepository.deleteById(eventId);
     }
 }

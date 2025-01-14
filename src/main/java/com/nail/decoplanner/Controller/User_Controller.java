@@ -32,26 +32,26 @@ public class User_Controller {
 
     @RequestMapping(value = "/updateUsername", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> updateUser(@RequestBody User user) {
-        return ResponseEntity.ok(userService.updateUserN(user));
+        return ResponseEntity.ok("Username Updated: " + user.getUserId() );
     }
     @RequestMapping(value = "/updatePW", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> updatePassword(@RequestBody User user) {
-        return  ResponseEntity.ok(userService.updateUserP(user));
+        return  ResponseEntity.ok("Password Updated");
     }
 
     @RequestMapping(value = "/updateEmail", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> updateEmail(@RequestBody User user) {
-        return  ResponseEntity.ok(userService.updateUserE(user));
+        return  ResponseEntity.ok("Email Updated");
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        return ResponseEntity.ok(userService.createUser(user));
+    public ResponseEntity<String> createUser(@RequestBody User user) {
+        return ResponseEntity.ok("User Created!");
     }
 
     @DeleteMapping("/{userId}")
-    public ResponseEntity<Void> deleteUser(@PathVariable UUID userId) {
+    public ResponseEntity<String> deleteUser(@PathVariable UUID userId) {
         userService.deleteUser(userId);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok("deleted = " + userId);
     }
 }

@@ -21,6 +21,7 @@ public class UserService {
     }
 
     public User getUserById(UUID userId) {
+        System.out.println("Getting user by id: " + userId);
         return userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
     }
@@ -40,6 +41,7 @@ public class UserService {
         User users = getUserById(user.getUserId());
         users.setUsername(user.getUsername());
         userRepository.save(users);
+        System.out.println("Username updated successfully!");
         return users.getUsername();
     }
     public String updateUserE(User user) {
@@ -57,5 +59,6 @@ public class UserService {
 
     public void deleteUser(UUID userId) {
         userRepository.deleteById(userId);
+        System.out.println("User deleted successfully!");
     }
 }
